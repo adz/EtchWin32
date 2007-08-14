@@ -63,6 +63,13 @@ Printer * PrinterEnv::getPrinter(const char * name) {
 	return (Printer *)0;
 }
 
+Printer * PrinterEnv::getDefaultPrinter() {
+	PrintDocument^ tmpDoc = gcnew PrintDocument();
+	String^ printerName = tmpDoc->PrinterSettings->PrinterName;
+	char * name= (char*)(void*)System::Runtime::InteropServices::Marshal::StringToHGlobalAnsi(printerName);
+	return getPrinter(name);
+}
+
 std::vector<Printer *> PrinterEnv::getPrinters() {
 
 	Logger::logMessage("PrinterEnv::getPrinters()");

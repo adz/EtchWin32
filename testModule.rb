@@ -27,9 +27,11 @@ begin
 	end
 	p3 = TestPrintable.new()
 	
-	labelPrinter = env.getPrinter("CutePDF Writer")
-	p3.setPrinter(labelPrinter)
-	p3.printDocument()
+	#labelPrinter = env.getPrinter("CutePDF Writer")
+	#p3.setPrinter(labelPrinter)
+	#p3.printDocument()
+	defaultPrinter = env.getDefaultPrinter()
+	puts defaultPrinter.getName()
 rescue Exception=>ex
 	puts "Exception occured: " + ex.message + " (" + ex.class.name + ") "
 ensure

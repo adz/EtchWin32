@@ -14,7 +14,7 @@
 	</Platforms>
 	<ToolFiles>
 		<ToolFile
-			RelativePath="..\..\..\..\..\..\Program Files\Microsoft Visual Studio 8\Common7\IDE\rules\SwigRule.rules"
+			RelativePath="..\..\..\..\..\Program Files\Microsoft Visual Studio 8\Common7\IDE\rules\SwigRule.rules"
 		/>
 	</ToolFiles>
 	<Configurations>
@@ -380,6 +380,10 @@
 				>
 			</File>
 		</Filter>
+		<File
+			RelativePath=".\CHANGELOG.txt"
+			>
+		</File>
 		<File
 			RelativePath=".\ReadMe.txt"
 			>
