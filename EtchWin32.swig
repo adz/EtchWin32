@@ -23,6 +23,10 @@
    static VALUE cpperror = rb_define_class("PrintingException", rb_eStandardError);
    rb_raise(cpperror, e.getMessage());
  }
+ catch (...) {
+   static VALUE cpperror = rb_define_class("PrintingException", rb_eStandardError);
+   rb_raise(cpperror, "An unexpected exception occured.");
+ }
 }
 
 %exception printDocument {
@@ -33,6 +37,10 @@
    static VALUE cpperror = rb_define_class("PrintingException", rb_eStandardError);
    rb_raise(cpperror, e.getMessage());
  }
+ catch (...) {
+   static VALUE cpperror = rb_define_class("PrintingException", rb_eStandardError);
+   rb_raise(cpperror, "An unexpected exception occured.");
+ }
 }
 
 %exception drawString {
@@ -42,6 +50,10 @@
  catch (PrintingException &e) {
    static VALUE cpperror = rb_define_class("PrintingException", rb_eStandardError);
    rb_raise(cpperror, e.getMessage());
+ }
+ catch (...) {
+   static VALUE cpperror = rb_define_class("PrintingException", rb_eStandardError);
+   rb_raise(cpperror, "An unexpected exception occured.");
  }
 }
 

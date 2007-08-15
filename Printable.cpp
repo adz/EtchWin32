@@ -8,6 +8,7 @@ using namespace System;
 
 Printable::Printable()
 {
+	fPrinter = (Printer *)0;
 }
 
 Printable::~Printable(void)
@@ -24,6 +25,7 @@ void Printable::setPrinter(Printer * printer) {
 }
 
 void Printable::printDocument(){
+
 	Logger::logMessage("Printable::printDocument()");
 
 	if (!fPrinter) {
@@ -38,6 +40,12 @@ void Printable::printDocument(){
 	document->PrinterSettings->PrinterName = gcnew String(printerName);
 
 	document->PrintPage += gcnew PrintPageEventHandler(	document, &PrintDocumentImpl::printPageHandler );
-	
-	document->Print();
+			
+	try {
+
+		document->Print();
+	} catch (Exception^ e) {
+		char * message = (char*)(void*)System::Runtime::InteropServices::Marshal::StringToHGlobalAnsi(e->ToString());
+		throw PrintingException(message);
+	} 
 }
