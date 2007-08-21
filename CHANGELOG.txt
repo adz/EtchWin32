@@ -1,5 +1,5 @@
 7/25/2007: 0.1.1: Initial Release
 
-Changes for 0.1.2 Release
+8/21/07: 0.1.2
 - Added support for default printer. (#13077)
 - Better exception handling for failures within printing.

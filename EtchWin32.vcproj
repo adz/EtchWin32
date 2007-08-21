@@ -376,6 +376,10 @@
 			Name="ruby"
 			>
 			<File
+				RelativePath=".\EtchWin32.gemspec"
+				>
+			</File>
+			<File
 				RelativePath=".\testModule.rb"
 				>
 			</File>
