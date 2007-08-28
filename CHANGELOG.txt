@@ -3,3 +3,6 @@
 8/21/07: 0.1.2
 - Added support for default printer. (#13077)
 - Better exception handling for failures within printing.
+
+For next release:
+- Add ability to specify multiple font attributes (such as bold and italic)

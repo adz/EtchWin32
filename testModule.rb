@@ -1,4 +1,5 @@
-
+#This is just for development testing. It is not either a regresssion test
+#or something that should be run unless you know what you are doing.
 begin
 	require 'EtchWin32'
 	env = EtchWin32::PrinterEnv.new()

@@ -380,18 +380,26 @@
 				>
 			</File>
 			<File
+				RelativePath=".\ExamplePrint.rb"
+				>
+			</File>
+			<File
 				RelativePath=".\testModule.rb"
 				>
 			</File>
 		</Filter>
-		<File
-			RelativePath=".\CHANGELOG.txt"
+		<Filter
+			Name="doc"
 			>
-		</File>
-		<File
-			RelativePath=".\ReadMe.txt"
-			>
-		</File>
+			<File
+				RelativePath=".\CHANGELOG.txt"
+				>
+			</File>
+			<File
+				RelativePath=".\ReadMe.txt"
+				>
+			</File>
+		</Filter>
 	</Files>
 	<Globals>
 	</Globals>
