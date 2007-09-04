@@ -5,7 +5,7 @@ FileUtils.copy('Release/EtchWin32.dll', 'tmp/lib/')
 FileUtils.cd('tmp')
 SPEC = Gem::Specification.new do |s|
 	s.name = "Etch"
-	s.version = "0.1.2"
+	s.version = "0.1.3"
 				
 	s.author = "Daniel R Somerfield"
 	s.email = "dans@outsidein.org"
