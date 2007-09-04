@@ -16,7 +16,7 @@ public:
 	//Actions
 	void drawString(char * toDraw, float x, float y, PrintFont * font);
 	PrintFont * getFont(char * font, float size, PrintFont::FontStyle style);
-
+	PrintFont * getFontMultistyle(char * font, float size, std::vector<int> styles);
 	//Properties
 	PageSpec * getPageSpec();
 private:

@@ -26,8 +26,7 @@ void PrintContextImpl::drawString(char * toDraw, float x, float y, PrintFont * p
 	if (!toDraw) {
 		Util::throwExceptionWithMessage("drawString requires a string");
 	}
-	/*System::Drawing::Font^ font = gcnew System::Drawing::Font( gcnew String(printFont->getName()), 
-		printFont->getSize(), PrintFont::getTranslatedFont(printFont->getStyle()));*/
+
 	PrintFontImpl * fontImpl = (PrintFontImpl*) printFont; 
 	System::Drawing::Font^ font = fontImpl->getSystemFont();
 	
@@ -48,4 +47,14 @@ PageSpec * PrintContextImpl::getPageSpec() {
 
 PrintFont * PrintContextImpl::getFont(char * font, float size, PrintFont::FontStyle style) {
 	return new PrintFontImpl(font, size, style);
+}
+
+PrintFont * PrintContextImpl::getFontMultistyle(char * font, float size, std::vector</*PrintFont::FontStyle*/int> styles) {
+
+	//There must be a better way to do this
+	std::vector<PrintFont::FontStyle> convertedStyles;
+	for (unsigned int i=0; i<styles.size(); i++) {
+		convertedStyles.push_back((PrintFont::FontStyle)styles[i]);
+	}
+	return new PrintFontImpl(font, size, convertedStyles);
 }

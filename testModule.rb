@@ -18,21 +18,43 @@ begin
 	class TestPrintable < EtchWin32::Printable
 		
 		def print(ctx)
-			font = ctx.getFont("Arial", 14, EtchWin32::PrintFont::REGULAR)
-			pageSpec = ctx.getPageSpec()
-			left = pageSpec.getLeftMargin()
-			textBottom = pageSpec.getTopMargin() + font.getHeight()
-			ctx.drawString("0 x 0", 0, 0, font)
+
+			regularFont = ctx.getFont("Arial", 14, EtchWin32::PrintFont::REGULAR)
+			
+			#Create the fonts
+			regularFont = ctx.getFont("Arial", 14, EtchWin32::PrintFont::REGULAR)
+			boldFont = ctx.getFont("Arial", 14, EtchWin32::PrintFont::BOLD)
+			italicFont = ctx.getFont("Arial", 14, EtchWin32::PrintFont::ITALIC)
+		
+			boldItalicFont = ctx.getFontMultistyle("Arial", 14, [EtchWin32::PrintFont::BOLD, EtchWin32::PrintFont::ITALIC])
+			
+			nextLine = 0;
+			
+			#draw the line
+			ctx.drawString("Line one (should be regular)", 0, nextLine, regularFont)
+			
+			#increment by font height
+			nextLine = nextLine + regularFont.getHeight()
+			
+			ctx.drawString("Line two (should be bold)", 0, nextLine, boldFont)
+			nextLine = nextLine + boldFont.getHeight()
+			
+			ctx.drawString("Line three (should be italic)", 0, nextLine, italicFont)
+			nextLine = nextLine + italicFont.getHeight()
+			
+			ctx.drawString("Line four (should be bold & italic)", 0, nextLine, boldItalicFont)
+			
+			
 		end
 		
 	end
 	p3 = TestPrintable.new()
 	
-	#labelPrinter = env.getPrinter("CutePDF Writer")
-	#p3.setPrinter(labelPrinter)
-	#p3.printDocument()
-	defaultPrinter = env.getDefaultPrinter()
-	puts defaultPrinter.getName()
+	printer = env.getPrinter("CutePDF Writer")
+	p3.setPrinter(printer)
+	p3.printDocument()
+	#defaultPrinter = env.getDefaultPrinter()
+	#puts defaultPrinter.getName()
 rescue Exception=>ex
 	puts "Exception occured: " + ex.message + " (" + ex.class.name + ") "
 ensure

@@ -57,7 +57,30 @@
  }
 }
 
+%exception getFontMultistyle {
+ try {
+   $action
+ }
+ catch (PrintingException &e) {
+   static VALUE cpperror = rb_define_class("PrintingException", rb_eStandardError);
+   rb_raise(cpperror, e.getMessage());
+ }
+ catch (...) {
+   static VALUE cpperror = rb_define_class("PrintingException", rb_eStandardError);
+   rb_raise(cpperror, "An unexpected exception occured.");
+ }
+}
+
 %feature("director") Printable; 
+
+%include "std_vector.i"
+
+namespace std {
+   //%template(vectorf) vector<PrintFont::FontStyle>;
+   //%template(vectorNum) std::vector<PrintContext::NUMBER>;
+	%template(Vectori) std::vector<int>;
+};
+
 
 %include "PrinterEnv.h"
 %include "Printer.h"
@@ -66,3 +89,4 @@
 %include "PrintFont.h"
 %include "PageSpec.h"
 %include "PrintingException.h"
+

@@ -1,5 +1,6 @@
 #pragma once
-
+#include <vector>
+using namespace std;
 class PrintFont
 {
 
@@ -9,17 +10,19 @@ public:
 	};
 
 	PrintFont(char * name, float size, FontStyle style);
+	PrintFont(char * name, float size, std::vector<PrintFont::FontStyle> styles);
+
 	~PrintFont(void);
 
 	char * getName();
 	float getSize();
-	FontStyle getStyle();
+	vector<FontStyle> getStyles();
 	virtual float getHeight()=0;
 
 private:
 	char * fName;
 	float fSize;
-	FontStyle fStyle;
+	vector<FontStyle> * fStyles;
 
 
 };

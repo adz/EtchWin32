@@ -9,6 +9,21 @@ PrintFontImpl::PrintFontImpl(char * name, float size, FontStyle style) : PrintFo
 		size, PrintFontImpl::getTranslatedFont(style));
 }
 
+PrintFontImpl::PrintFontImpl(char * name, float size, std::vector<PrintFont::FontStyle> styles) : 
+	PrintFont(name, size, styles)
+{
+	if (styles.size() > 0) {
+		System::Drawing::FontStyle mask = getTranslatedFont(styles[0]);
+		for (unsigned int i=1; i<styles.size(); i++) {
+			System::Drawing::FontStyle systemStyle = getTranslatedFont(styles[i]);
+			mask = mask | systemStyle;
+		}
+		fSystemFont = gcnew System::Drawing::Font( gcnew String(name), 
+			size, mask);
+	}
+
+}
+
 PrintFontImpl::~PrintFontImpl(void)
 {
 	if (fSystemFont) {
