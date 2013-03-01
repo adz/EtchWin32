@@ -2,6 +2,8 @@
     DYNAMIC LINK LIBRARY : EtchWin32 Project Overview
 ========================================================================
 
+NOTE: This is a fork of http://rubyforge.org/projects/etch/ so I can install it as a gem for mingw
+
 Requirements
 ------------
 
